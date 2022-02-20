@@ -21,3 +21,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
         BRANCH: gh-pages
         FOLDER: release/wwwroot
+    - name: Change base-tag in index.html from / to test-site
+      run: sed -i 's/<base href="\/" \/>/<base href="\/test-site\/" \/>/g' release/wwwroot/index.html
+    # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
+    - name: Add .nojekyll file
+      run: touch release/wwwroot/.nojekyll
