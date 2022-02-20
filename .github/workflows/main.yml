@@ -67,3 +67,7 @@ jobs:
             force_orphan: true
             # TODO uncomment the following line if you have a custom domain name
             # cname: demo.meziantou.net
+        - name: Publish
+          run: |
+            cp wwwroot/index.html wwwroot/404.html
+            dotnet publish test-site.csproj --configuration Release
